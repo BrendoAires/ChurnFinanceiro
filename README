@@ -1,0 +1,63 @@
+Previsão de Churn com Keras
+
+Este é um projeto de Deep Learning desenvolvido para prever a taxa de rotatividade de clientes (Churn) de uma instituição bancária utilizando a biblioteca Keras/TensorFlow.
+
+O que o projeto faz?
+
+Pré-processamento:
+
+Codificação de variáveis categóricas com LabelEncoder.
+
+Normalização de variáveis numéricas com StandardScaler.
+
+Divisão dos dados em 70% para treino e 30% para teste.
+
+Modelo (Rede Neural):
+
+Uma arquitetura sequencial simples com 3 camadas ocultas (Dense) utilizando ativação ReLU e camadas de Dropout (40%) para evitar o sobreajuste (overfitting).
+
+Camada de saída com ativação Sigmoid para classificação binária.
+
+# Estrutura simples da rede
+model = Sequential([
+    Dense(64, activation='relu', input_dim=X_train.shape[1]),
+    Dropout(0.4),
+    Dense(32, activation='relu'),
+    Dropout(0.4),
+    Dense(64, activation='relu'),
+    Dropout(0.4),
+    Dense(1, activation='sigmoid')
+])
+
+
+Resultados Obtidos
+
+Após 100 épocas de treino, o modelo obteve os seguintes resultados na base de teste:
+
+Acurácia: 86.17%
+
+F1-Score: 59.11%
+
+Recall (Sensibilidade): 48.31%
+
+Matriz de Confusão:
+
+[[2285   94]  -> Clientes que o modelo previu que ficavam (94 erros)
+ [ 321  300]] -> Clientes que o modelo previu que saíam (321 erros)
+
+
+Nota: Como o conjunto de dados é desbalanceado, o modelo apresenta uma acurácia alta, mas um Recall baixo (deixa passar muitos clientes que realmente cancelaram o serviço). Como melhoria futura, sugere-se aplicar técnicas de balanceamento de dados (como SMOTE).
+
+🖥️ Como Executar
+
+Clone o repositório:
+
+git clone [https://github.com/seu-usuario/nome-do-repositorio.git](https://github.com/seu-usuario/nome-do-repositorio.git)
+
+
+Instale as dependências básicas:
+
+pip install pandas numpy scikit-learn tensorflow
+
+
+Abra e execute o notebook no seu ambiente local ou no Google Colab.
